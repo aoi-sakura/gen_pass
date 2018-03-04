@@ -9,4 +9,10 @@
 
 ## Install
 
+### From local repository
+
     % go build -o gen_pass main.go
+
+### From remote repository
+
+    % go get github.com/wataruSakurai/gen_pass
