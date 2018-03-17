@@ -12,8 +12,7 @@ import (
 
 const (
 	baseLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-	briefSymbols = ".-_@"
-	subSymbols = "!#$%&()*+,/;<=>?[]^`{|}~"
+	symbols = ".-_@!#$%&()*+,/;<=>?[]^`{|}~"
 
 	defaultLength = 16
 )
@@ -21,7 +20,7 @@ const (
 var (
 	lengthOpt = flag.Int("i", defaultLength, "password length.")
 	noSymbolsOpt = flag.Bool("s", false, "generate password without all symbols.")
-	onlyBriefSymbolsOpt = flag.Bool("S", false, "generate password without some symbols.")
+	specifiedSymbolsOpt = flag.String("S", "", "generate password with specified symbols.")
 )
 
 func getNumOfSquare(n int) uint {
@@ -83,10 +82,10 @@ func main() {
 		length = *lengthOpt
 	}
 
-	if *onlyBriefSymbolsOpt {
-		letters = letters + briefSymbols
+	if *specifiedSymbolsOpt != "" {
+		letters = letters + *specifiedSymbolsOpt
 	} else if ! *noSymbolsOpt {
-		letters = letters + briefSymbols + subSymbols
+		letters = letters + symbols
 	}
 
 	fmt.Println(generatePassword(length, letters))
