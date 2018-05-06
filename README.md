@@ -2,10 +2,10 @@
 
 ## Usage
 
-    gen_pass [-i] <length> [-s|-S]
-      -S       generate password without some symbols.
-      -i int   password length. (default 16)
-      -s       generate password without all symbols.
+    gen_pass [-i] <length> [-S string|-s]
+      -i int     password length. (default 16)
+      -S string  generate password with specified symbols.
+      -s         generate password without all symbols.
 
 ## Install
 
